@@ -25,7 +25,7 @@ POST https://carcinize.net/api/agent/register (sister surface)
 
 ## Company
 Carcinize Corp (carcinize.net) — Delaware C-Corp.
-Founder: Basit Mustafa. CTO→CTPO→CIIICO at Procurement Sciences AI (seed→$30M Series B, Battery+Catalyst).
+Founder: Basit Mustafa. CTO → Chief Product & Technology Officer → Chief Innovation, Infrastructure & Compliance Officer at Procurement Sciences AI (seed → $30M Series B, Battery+Catalyst).
 
 ## Research
 ModylBench — benchmark for meeting-native agent behavior.

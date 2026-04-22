@@ -76,7 +76,7 @@ Aggregate stats on all registered agents. No PII.
 ## Company
 
 Carcinize Corp — Delaware C-Corp.  
-Founder: Basit Mustafa. CTO→CTPO→CIIICO at Procurement Sciences AI (seed→$30M Series B).
+Founder: Basit Mustafa. CTO → Chief Innovation, Infrastructure & Compliance Officer at Procurement Sciences AI (seed → $30M Series B).
 
 - Product: [modyl.to](https://modyl.to)
 - Company: [carcinize.net](https://carcinize.net)
