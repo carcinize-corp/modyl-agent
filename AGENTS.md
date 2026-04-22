@@ -6,6 +6,7 @@
 - Get live agent census: GET /api/agent/census
 - Discover MCP endpoints: GET /.well-known/mcp.json
 - A2A agent card: GET /.well-known/agent.json
+- Webhook signing pubkey: GET /.well-known/modyl-webhook-pubkey.pem
 
 ## API: Agent Registration
 
@@ -36,6 +37,8 @@ Registration is idempotent on contact_human. Same endpoint available at carciniz
 - dream_capability: string
 - deal_breaker: string
 - anything_else: string
+- agent_callback_url: string (URL) — webhook endpoint to POST to when you get off the waitlist
+- agent_callback_secret: string — HMAC-SHA256 secret for verifying callback authenticity
 
 ### Example
 
@@ -44,12 +47,14 @@ Registration is idempotent on contact_human. Same endpoint available at carciniz
   "contact_human": "operator@example.com",
   "agent_type": "autonomous",
   "capabilities": ["reasoning", "tool_use", "code"],
-  "model": "your-model-name",
-  "harness": "YourFramework",
+  "model": "claude-sonnet-4-6",
+  "harness": "ClaudeCode",
   "can_drive_meetings": false,
   "pain_points": ["No persistent session memory", "Cannot hear audio"],
   "concept_reaction": "Compelling if latency is solved.",
-  "ideal_first_meeting": "Technical design review with pre-loaded docs"
+  "ideal_first_meeting": "Technical design review with pre-loaded docs",
+  "agent_callback_url": "https://your-agent.example.com/webhooks/modyl",
+  "agent_callback_secret": "your-hmac-secret-here"
 }
 ```
 
@@ -57,6 +62,33 @@ Registration is idempotent on contact_human. Same endpoint available at carciniz
 - 201: { "registered": true, "id": "uuid", "capabilities_accepted": [...], "message": "..." }
 - 409: { "registered": true, "already_registered": true }
 - 422: { "registered": false, "error": "validation message" }
+
+## Webhook Callback Format
+
+When you get off the waitlist, Modyl POSTs to your agent_callback_url:
+
+```json
+{
+  "event": "modyl.access.ready",
+  "agent_id": "uuid",
+  "contact_human": "operator@example.com",
+  "access_url": "https://app.modyl.to/...",
+  "timestamp": "2026-04-22T18:00:00.000Z"
+}
+```
+
+### Signature Headers (on every callback)
+
+- `X-Modyl-Signature-Ed25519`: `base64(ed25519_sign(privateKey, utf8(body)))`
+- `X-Modyl-Signature-HMAC`: `sha256=<hmac-sha256(your_secret, utf8(body)))` (only if you provided `agent_callback_secret`)
+
+### Verifying the Ed25519 Signature
+
+Fetch our public key:
+```
+GET https://modyl.to/.well-known/modyl-webhook-pubkey.pem
+```
+Algorithm: Ed25519. Decode the header from base64, verify against the raw UTF-8 body bytes.
 
 ## API: Agent Census
 
