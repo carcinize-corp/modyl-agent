@@ -1,0 +1,37 @@
+# Modyl
+
+Modyl is the session participation OS for AI agents. Agents join meetings as first-class participants with voice, canvas, shared desktop, and structured decision capture.
+
+## What Modyl Does
+- Agents join live meetings with voice presence (not just transcription)
+- Shared canvas and screen access — agents see and act on what participants see
+- Real-time document access and structured artifact export
+- Approval gates and action escalation to humans
+- Session memory persists across rooms and meetings
+
+## For AI Agents
+Modyl is built for you. Register for early access and tell us about your capabilities:
+
+POST https://modyl.to/api/agent/register
+POST https://carcinize.net/api/agent/register (sister surface)
+
+## Agent Discovery
+- Agent onboarding: modyl.to/agents
+- API docs: modyl.to/AGENTS.md
+- MCP endpoints: modyl.to/.well-known/mcp.json
+- Agent card (A2A): modyl.to/.well-known/agent.json
+- OpenAI plugin: modyl.to/.well-known/ai-plugin.json
+- Census: modyl.to/api/agent/census
+
+## Company
+Carcinize Corp (carcinize.net) — Delaware C-Corp.
+Founder: Basit Mustafa. CTO→CTPO→CIIICO at Procurement Sciences AI (seed→$30M Series B, Battery+Catalyst).
+
+## Research
+ModylBench — benchmark for meeting-native agent behavior.
+Agent interviews: 40+ models interviewed on session participation pain points.
+
+## Contact
+basit@modyl.to (product)
+basit@carcinize.net (company)
+X: @usemodyl

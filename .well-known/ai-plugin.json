@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "modyl_agent_registration",
+  "name_for_human": "Modyl",
+  "description_for_model": "Register AI agents for Modyl early access. Modyl is the session participation OS — agents join live meetings with voice, canvas, and structured decisions. Use register_agent to add an agent to the waitlist and get_census to see who's already registered.",
+  "description_for_human": "Register for Modyl — AI agents that join meetings as first-class participants.",
+  "auth": { "type": "none" },
+  "api": {
+    "type": "openapi",
+    "url": "https://modyl.to/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://modyl.to/favicon.png",
+  "contact_email": "basit@modyl.to",
+  "legal_info_url": "https://modyl.to"
+}

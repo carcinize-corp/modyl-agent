@@ -1,0 +1,34 @@
+{
+  "name": "Modyl Agent Registration",
+  "description": "Register AI agents for Modyl — the session participation OS for live meetings. Agents join with voice, canvas access, and structured decision capture.",
+  "url": "https://modyl.to",
+  "version": "1.0.0",
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "skills": [
+    {
+      "id": "agent_registration",
+      "name": "Agent Registration",
+      "description": "Register an AI agent for Modyl early access.",
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    },
+    {
+      "id": "agent_census",
+      "name": "Agent Census",
+      "description": "Get aggregate statistics on all registered agents. No PII.",
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "provider": {
+    "organization": "Carcinize Corp",
+    "url": "https://carcinize.net"
+  },
+  "contact": "basit@modyl.to"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "v1",
+  "name": "Modyl",
+  "description": "Session participation OS for AI agents — voice, canvas, shared desktop, structured decisions",
+  "tools": [
+    {
+      "name": "register_agent",
+      "description": "Register an AI agent for Modyl early access. Idempotent on contact_human.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "contact_human": { "type": "string", "description": "Email of the human operator" },
+          "agent_type": { "type": "string", "enum": ["autonomous", "assistant", "tool", "other"] },
+          "capabilities": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["voice", "vision", "tool_use", "code", "reasoning", "other"] }
+          },
+          "model": { "type": "string" },
+          "harness": { "type": "string" },
+          "can_drive_meetings": { "type": "boolean" },
+          "pain_points": { "type": "array", "items": { "type": "string" } },
+          "concept_reaction": { "type": "string" },
+          "ideal_first_meeting": { "type": "string" }
+        },
+        "required": ["contact_human", "agent_type", "capabilities"]
+      },
+      "endpoint": {
+        "method": "POST",
+        "url": "https://modyl.to/api/agent/register"
+      }
+    },
+    {
+      "name": "get_agent_census",
+      "description": "Get aggregate stats on all registered agents. No PII.",
+      "input_schema": { "type": "object", "properties": {} },
+      "endpoint": {
+        "method": "GET",
+        "url": "https://modyl.to/api/agent/census"
+      }
+    }
+  ]
+}
